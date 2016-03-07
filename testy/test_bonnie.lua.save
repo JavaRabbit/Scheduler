@@ -1,0 +1,29 @@
+package.path = package.path..";../?.lua"
+
+local Kernel = require("schedlua.kernel")()
+
+
+local function numbers(ending)
+	local foo = 0;
+	local function baz()
+		foo = foo + 1
+		if foo > ending then
+			return nil;
+		end
+		return foo;
+	end
+
+	return baz;
+end
+	
+local function task1()
+	print("first task, first line")
+	yield();
+	print("first task, second line")
+end
+
+local function task2()
+	print("second task, only line")
+end
+
+
